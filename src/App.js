@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
-  Link,
+  Switch,
   NavLink,
   Route
 } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
 const Home = () => <h1>Strona startowa</h1>;
 const News = () => <h2>Aktualności</h2>;
 const Contact = () => <h2>Kontakt do nas</h2>;
+const ErrorPage = () => <h1>Strona nie istnieje</h1>;
 
 function App() {
   return (
@@ -37,9 +38,12 @@ function App() {
           </nav>
         </header>
         <section>
-          <Route path="/" exact component={Home} />
-          <Route path="/news" component={News} />
-          <Route path="/contact" component={Contact} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/news" component={News} />
+            <Route path="/contact" component={Contact} />
+            <Route component={ErrorPage} />
+          </Switch>
         </section>
       </div>
     </Router>
